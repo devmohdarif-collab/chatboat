@@ -1,8 +1,6 @@
-langchain == 0.1.16
-langchain-community == 0.0.32
-langchain>=1.0.0,<2.0.0
-requests == 2.31.0
-tavily-python
-python-dotenv
 streamlit
+requests
+python-dotenv
+tavily-python
+langchain>=1.0.0,<2.0.0
 langchain-groq
