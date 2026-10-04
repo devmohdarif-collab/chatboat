@@ -4,3 +4,4 @@ langchain-core == 0.1.42
 requests == 2.31.0
 tavily-python
 python-dotenv
+streamlit
