@@ -8,6 +8,7 @@ from tavily import TavilyClient
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from langchain.tools import tool
+from langchain_openrouter import ChatOpenRouter
 
 # -------------------------
 # Page configuration
@@ -31,13 +32,14 @@ try:
         "GROQ_API_KEY",
         "TAVILY_API_KEY",
         "WEATHER_STACK_API",
+        "OPENROUTER_API_KEY"
     ):
         if key in st.secrets:
             os.environ[key] = str(st.secrets[key])
 except Exception:
     pass
 
-required_keys = ["GROQ_API_KEY", "TAVILY_API_KEY"]
+required_keys = ["GROQ_API_KEY", "TAVILY_API_KEY","OPENROUTER_API_KEY"]
 missing_keys = [
     key for key in required_keys if not os.getenv(key)
 ]
@@ -124,12 +126,9 @@ def search_weather(city: str) -> str:
 # LLM and agent
 # -------------------------
 
-llm = ChatGroq(
-    model="openai/gpt-oss-120b",
-    temperature=0,
-    max_tokens=None,
-    reasoning_format="parsed",
-    max_retries=2,
+llm=ChatOpenRouter(
+    model="openai/gpt-4o-mini",
+    temperature=0
 )
 
 agent = create_agent(
