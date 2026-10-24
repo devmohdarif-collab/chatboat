@@ -4,3 +4,4 @@ python-dotenv
 tavily-python
 langchain>=1.0.0,<2.0.0
 langchain-groq
+langchain-openrouter
